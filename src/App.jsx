@@ -12,8 +12,7 @@ export default function App() {
   const [clientes, setClientes] = useState([]);
   const [clienteEditando, setClienteEditando] = useState(null);
 
-  // 🔹 Cargar clientes al iniciar
-  const cargarClientes = async () => {
+    const cargarClientes = async () => {
     const res = await getClientes();
     setClientes(res.data);
   };
@@ -22,8 +21,7 @@ export default function App() {
     cargarClientes();
   }, []);
 
-  // 🔹 Guardar o actualizar
-  const guardarCliente = async (cliente) => {
+   const guardarCliente = async (cliente) => {
     if (clienteEditando) {
       await updateCliente(clienteEditando.id, cliente);
       setClienteEditando(null);
@@ -31,13 +29,12 @@ export default function App() {
       await createCliente(cliente);
     }
 
-    cargarClientes(); // ← IMPORTANTE
+    cargarClientes(); 
   };
 
-  // 🔹 Eliminar
   const eliminarCliente = async (id) => {
     await deleteCliente(id);
-    cargarClientes(); // ← IMPORTANTE
+    cargarClientes(); 
   };
 
   return (
